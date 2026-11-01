@@ -2,7 +2,6 @@ import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
 import {
   Dimensions,
   StyleSheet,
@@ -73,7 +72,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#141E30",
   },
   backgroundOverlay: {
-    ...StyleSheet.absoluteFillObject,
     overflow: "hidden",
   },
   topCircle: {

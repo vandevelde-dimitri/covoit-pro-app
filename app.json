@@ -66,7 +66,8 @@
           }
         }
       ],
-      "./plugins/withTransparentNavBar.js"
+      "./plugins/withTransparentNavBar.js",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

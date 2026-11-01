@@ -123,6 +123,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const inRecoveryFlow = getIsRecoveryFlow();
 
         if (event === "SIGNED_IN" || event === "INITIAL_SESSION") {
+          if (!session) {
+            setProfileCompleted(false);
+            setLoading(false);
+            clearTimeout(initTimeoutId);
+            return;
+          }
+
           if (inRecoveryFlow) {
             if (__DEV__)
               console.log(
