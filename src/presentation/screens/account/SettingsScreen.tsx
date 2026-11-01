@@ -53,7 +53,7 @@ export default function SettingsScreen() {
     vibrations: yup.boolean(),
     notificationPush: yup.boolean(),
     toConvey: yup.boolean(),
-    available: yup.boolean(),
+    vacationMode: yup.boolean(),
   });
 
   const emailSchema = yup.object({
@@ -83,7 +83,7 @@ export default function SettingsScreen() {
       vibrations: false,
       notificationPush: true,
       toConvey: false,
-      available: false,
+      vacationMode: true,
     },
   });
 
@@ -93,7 +93,7 @@ export default function SettingsScreen() {
         vibrations: settings.vibrations,
         notificationPush: settings.notificationPush,
         toConvey: settings.toConvey,
-        available: settings.available,
+        vacationMode: !settings.available,
       });
     }
   }, [settings, settingsForm]);
@@ -174,7 +174,7 @@ export default function SettingsScreen() {
             onAfterChange={(value) => updateSettings({ toConvey: value })}
           />
           <FormMenuSwitch
-            name="available"
+            name="vacationMode"
             control={settingsForm.control}
             label="Mode vacances"
             icon="airplane"
