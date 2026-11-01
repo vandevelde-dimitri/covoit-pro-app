@@ -17,6 +17,8 @@ export const getAuthErrorMessage = (error: any) => {
 
     case "email_address_invalid":
       return "Le format de l'adresse email est invalide.";
+    case "Email not confirmed":
+      return "L'adresse email n'est pas confirmée.";
     default:
       return "Une erreur est survenue, veuillez réessayer.";
   }
