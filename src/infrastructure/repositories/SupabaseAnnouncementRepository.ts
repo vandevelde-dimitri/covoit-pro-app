@@ -65,7 +65,7 @@ export class SupabaseAnnouncementRepository implements IAnnouncementRepository {
       throw new BusinessError(`Tri invalide: ${sortBy}`);
     }
 
-    const validPageSize = Math.max(10, Math.min(pageSize, 50));
+    const validPageSize = Math.max(1, Math.min(pageSize, 50));
 
     const validOffset = Math.max(0, (page - 1) * validPageSize);
     if (validOffset > 100000) {
