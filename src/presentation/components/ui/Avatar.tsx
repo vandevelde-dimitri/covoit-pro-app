@@ -2,7 +2,6 @@ import { User } from "@/src/domain/entities/user/User";
 import { UserContract } from "@/src/domain/entities/user/User.enum";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
-import React from "react";
 import { Pressable } from "react-native";
 import { useAuth } from "../../hooks/authContext";
 
@@ -37,8 +36,6 @@ const Avatar = ({
   const ownerProfile = id === session?.user.id;
   const cacheKey = avatarUpdatedAt ? new Date(avatarUpdatedAt).getTime() : "";
   const imageSource = profileAvatar ? `${profileAvatar}?v=${cacheKey}` : null;
-
-  console.log("test du nom - prenom", userData);
 
   const fallbackImage =
     "https://images.unsplash.com/photo-1740252117044-2af197eea287?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";

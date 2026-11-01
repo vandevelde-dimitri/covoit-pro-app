@@ -1,4 +1,9 @@
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+import {
+  ExternalPathString,
+  RelativePathString,
+  useRouter,
+} from "expo-router";
 import React, { memo, useEffect, useRef, useState } from "react";
 import {
   Keyboard,
@@ -440,6 +445,8 @@ export const CurvedBottomTabs: React.FC<
       navigation,
       gradients = ["#0F2027", "#203A43"],
     }) => {
+      const router = useRouter();
+
       const tabs: Tab[] = state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const isActive = state.index === index;
@@ -469,14 +476,20 @@ export const CurvedBottomTabs: React.FC<
       const handlePress = (index: number, tab: Tab): void => {
         const route = state.routes[index];
 
-        const event = navigation.emit({
+        const event = navigation?.emit?.({
           type: "tabPress",
           target: route.key,
           canPreventDefault: true,
         });
 
-        if (state.index !== index && !event.defaultPrevented) {
-          navigation.navigate(route.name, route.params);
+        if (state.index !== index && !event?.defaultPrevented) {
+          if (navigation?.navigate) {
+            navigation.navigate(route.name, route.params);
+          } else {
+            router.push(
+              `/(tabs)/${route.name}` as RelativePathString | ExternalPathString,
+            );
+          }
         }
       };
 
